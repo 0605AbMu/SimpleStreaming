@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "RPCVideoStreaming";
+
+package streaming;
+
+// The greeting service definition.
+service RemoteStream {
+  // Sends a greeting
+  rpc WriteBuffer (StreamRequest) returns (Empty);
+  rpc ReadBuffer(Empty) returns (stream StreamReply);
+}
+
+// The request message containing the user's name.
+message StreamRequest {
+  bytes buffer = 1;
+}
+
+message StreamReply{
+  bytes buffer = 1;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
+
+message Empty {
+  
+}
